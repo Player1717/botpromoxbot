@@ -24,12 +24,18 @@ function showPromoCodes(store) {
 
     document.getElementById('store-title').textContent = storeTitle[store];
     const list = document.getElementById('promocode-list');
-    list.innerHTML = "";  // Очистка списка
+    list.innerHTML = ""; // Очистка списка
 
     // Заполнение списка промокодов
     promocodes[store].forEach(promo => {
         const listItem = document.createElement('li');
         listItem.textContent = `${promo.code} - ${promo.description}`;
+        listItem.style.cursor = 'pointer'; // Добавляем стиль для указателя
+        listItem.title = "Нажмите, чтобы скопировать"; // Подсказка при наведении
+
+        // Добавляем обработчик клика для копирования
+        listItem.addEventListener('click', () => copyToClipboard(promo.code));
+
         list.appendChild(listItem);
     });
 
@@ -44,10 +50,12 @@ function goBack() {
     document.getElementById('promocodes').style.display = 'none';
 }
 
-// Инициализация кнопок
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector('button[onclick="showPromoCodes(\'yandex\')"]').addEventListener('click', () => showPromoCodes('yandex'));
-    document.querySelector('button[onclick="showPromoCodes(\'mega\')"]').addEventListener('click', () => showPromoCodes('mega'));
-    document.querySelector('button[onclick="showPromoCodes(\'ozon\')"]').addEventListener('click', () => showPromoCodes('ozon'));
-    document.querySelector('button[onclick="goBack()"]').addEventListener('click', goBack);
-});
+// Функция для копирования текста в буфер обмена
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert(`Промокод "${text}" скопирован в буфер обмена!`);
+    }).catch(err => {
+        console.error('Ошибка при копировании: ', err);
+        alert('Не удалось скопировать промокод. Пожалуйста, попробуйте еще раз.');
+    });
+}
