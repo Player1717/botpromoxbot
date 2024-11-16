@@ -1,70 +1,69 @@
-/* Общие стили */
-* {
+/* Основной стиль страницы */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(145deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
-    color: #333;
-    margin: 0;
-    padding: 20px;
-}
-
-/* Основной контейнер */
-#stores, #promocodes {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    max-width: 400px;
-    width: 100%;
     text-align: center;
-    transition: transform 0.3s ease;
+    background-color: #f9f9f9;
 }
 
 /* Заголовок */
 h1 {
-    font-size: 1.6em;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-size: 24px;
+    margin: 20px 0;
     color: #333;
 }
 
-/* Кнопки выбора магазина */
-button {
-    background-color: #6c63ff;
-    color: #ffffff;
-    padding: 14px;
-    font-size: 1em;
-    margin: 10px 0;
+/* Кнопки магазинов */
+.store-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 15px;
     border: none;
     border-radius: 8px;
-    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: left;
 }
 
-button:hover {
-    background-color: #574b90;
+/* Стиль кнопки при наведении */
+.store-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-button:active {
-    transform: scale(0.98);
+/* Логотип внутри кнопки */
+.store-button img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 50%; /* Округление для аккуратного вида */
+    background-color: #f0f0f0;
+    padding: 5px;
 }
 
-/* Название выбранного магазина */
-#store-title {
-    font-size: 1.5em;
-    margin-bottom: 15px;
+/* Название магазина */
+.store-button span {
+    font-size: 18px;
+    font-weight: bold;
     color: #333;
+}
+
+/* Экран с промокодами */
+#promocodes {
+    padding: 20px;
+}
+
+#store-title {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #444;
 }
 
 /* Список промокодов */
@@ -74,37 +73,34 @@ button:active {
 }
 
 #promocode-list li {
-    background: #f0f0f0;
-    padding: 12px;
-    margin: 8px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ddd;
     border-radius: 6px;
-    font-size: 1em;
-    color: #333;
-    text-align: left;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+#promocode-list li:hover {
+    background-color: #f1f1f1;
 }
 
 /* Кнопка "Назад" */
-button:last-child {
-    background-color: #ff6363;
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.2s ease;
 }
 
-button:last-child:hover {
-    background-color: #e55a5a;
-}
-
-/* Адаптивные стили для экранов меньше 600px */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.4em;
-    }
-
-    button {
-        font-size: 0.9em;
-        padding: 12px;
-    }
-
-    #promocode-list li {
-        font-size: 0.9em;
-        padding: 10px;
-    }
+button:hover {
+    background-color: #0056b3;
 }
